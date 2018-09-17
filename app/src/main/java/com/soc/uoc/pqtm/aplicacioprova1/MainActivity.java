@@ -25,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView_activity_main);
 
         textView.setText(String.valueOf(comptador));
+        textView.setTextColor(getResources().getColor(R.color.colorPrimary));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 comptador += 1;
                 textView.setText(String.valueOf(comptador));
+                changeColor();
             }
         });
 
@@ -39,8 +41,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 comptador -= 1;
                 textView.setText(String.valueOf(comptador));
+                changeColor();
             }
         });
+    }
 
+    private void changeColor() {
+        if (comptador > 0) {
+            textView.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+        } else {
+            textView.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+        }
     }
 }
